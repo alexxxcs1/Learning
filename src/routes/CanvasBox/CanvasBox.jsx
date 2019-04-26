@@ -29,7 +29,7 @@ constructor(props) {
      this.refreshProps = this.refreshProps.bind(this);
      this.getScreenSize = this.getScreenSize.bind(this);
      this.getTextData = this.getTextData.bind(this);
-     this.DrawText = this.DrawText.bind(this);
+     this.DrawImage = this.DrawImage.bind(this);
      this.HandleInputChange = this.HandleInputChange.bind(this);
      this.drawCricle = this.drawCricle.bind(this);
      this.Infinity = this.Infinity.bind(this);
@@ -51,7 +51,7 @@ refreshProps(props) {
   
 }
 HandleInputChange(e){
-  this.DrawText(this.getTextData(e.target.value))
+  this.DrawImage(this.getTextData(e.target.value))
 }
 getScreenSize(){
   this.setState({
@@ -96,16 +96,16 @@ getTextData(text){
   }
   return points;
 }
-DrawText(textdata){
+DrawImage(imgdata){
   let ctx = this.refs.canvas.getContext('2d');
   let width = parseInt(this.refs.canvas.getAttribute('width'))
   let height = parseInt(this.refs.canvas.getAttribute('height'))
   ctx.clearRect(0, 0, width, height);
-  if (textdata.length<pointArray.length) {
-    pointArray.splice(textdata.length,pointArray.length);
+  if (imgdata.length<pointArray.length) {
+    pointArray.splice(imgdata.length,pointArray.length);
   }
-  for (let z = 0; z < textdata.length; z++) {
-    let data = textdata[z];
+  for (let z = 0; z < imgdata.length; z++) {
+    let data = imgdata[z];
     if (pointArray[z]) {
       pointArray[z].x = data.x*width;
       pointArray[z].y = data.y*height;
@@ -146,7 +146,7 @@ Infinity(){
   }
 }
 ButtonHandleText(value){
-  this.DrawText(this.getTextData(value));
+  this.DrawImage(this.getTextData(value));
 }
 render() {
   return (
