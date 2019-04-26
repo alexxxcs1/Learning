@@ -33,6 +33,7 @@ constructor(props) {
      this.HandleInputChange = this.HandleInputChange.bind(this);
      this.drawCricle = this.drawCricle.bind(this);
      this.Infinity = this.Infinity.bind(this);
+     this.ButtonHandleText = this.ButtonHandleText.bind(this);
 }
 componentWillReceiveProps(nextprops) {
   this.refreshProps(nextprops);
@@ -120,8 +121,8 @@ drawCricle(cxt,startx,starty, x, y, r, moveX, moveY) {
   cxt.fillStyle = 'red';
   cxt.beginPath()
   cxt.arc(circle.startx, circle.starty, circle.r, 0, 2 * Math.PI)
-  cxt.closePath()
   cxt.fill();
+  cxt.closePath()
   return circle;
 }
 Infinity(){
@@ -144,10 +145,20 @@ Infinity(){
     this.drawCricle(ctx,data.startx,data.starty,data.x,data.y,data.r);
   }
 }
-
+ButtonHandleText(value){
+  this.DrawText(this.getTextData(value));
+}
 render() {
   return (
     <div className={style.CanvasBox}>
+      <div className={style.HandleBox}>
+        <div className={style.Button} onClick={this.ButtonHandleText.bind(this,'5')}>5</div>
+        <div className={style.Button} onClick={this.ButtonHandleText.bind(this,'4')}>4</div>
+        <div className={style.Button} onClick={this.ButtonHandleText.bind(this,'3')}>3</div>
+        <div className={style.Button} onClick={this.ButtonHandleText.bind(this,'2')}>2</div>
+        <div className={style.Button} onClick={this.ButtonHandleText.bind(this,'1')}>1</div>
+        <div className={style.Button} onClick={this.ButtonHandleText.bind(this,'FUCK U')}>I LOVE U</div>
+      </div>
       <input type="text" className={style.TextBox} onChange={this.HandleInputChange}/>
       <canvas ref={'canvas'}></canvas>
     </div>
