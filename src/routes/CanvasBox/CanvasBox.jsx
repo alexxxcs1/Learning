@@ -86,7 +86,7 @@ getTextData(text){
   const size = 0.8;
   const lineHeight = 7;
   const fSize = Math.min(height * size * 10 / lineHeight, width * size * 10 / textsize.width);
-  tmpctx.font = `bold ${fSize}px Arial`;   // `sss ${var} sss` 模板字符串 相当于 'sss '+var+' sss'
+  tmpctx.font = `bold ${fSize}px Source Han Sans CN`;   // `sss ${var} sss` 模板字符串 相当于 'sss '+var+' sss'
   const measureResize = tmpctx.measureText(text);
   let left = (width - measureResize.width) / 2;
   const bottom = (height + fSize / 10 * lineHeight) / 2;
@@ -118,7 +118,7 @@ DrawImage(imgdata){
       pointArray[z].x = data.x*width;
       pointArray[z].y = data.y*height;
     }else{
-      pointArray.push(this.drawCricle(ctx,Math.random()*width,Math.random()*height,data.x * width,data.y * height,2,spped,spped))
+      pointArray.push(this.drawCricle(ctx,Math.random()*width,Math.random()*height,data.x * width,data.y * height,1,spped,spped))
     }
     
   }
@@ -126,7 +126,7 @@ DrawImage(imgdata){
 // 绘制原点
 drawCricle(cxt,startx,starty, x, y, r, moveX, moveY) {
   var circle = new Circle(startx,starty,x, y, r, moveX, moveY)
-  cxt.fillStyle = 'red';
+  cxt.fillStyle = '#'+(Math.random()*0xffffff<<0).toString(16);
   cxt.beginPath()
   cxt.arc(circle.startx, circle.starty, circle.r, 0, 2 * Math.PI)
   cxt.fill();
