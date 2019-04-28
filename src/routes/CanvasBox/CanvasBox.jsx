@@ -134,7 +134,6 @@ drawCricle(cxt,startx,starty, x, y, r, moveX, moveY) {
   return circle;
 }
 Infinity(){
-  requestAnimationFrame(this.Infinity);
   let ctx = this.refs.canvas.getContext('2d');
   let width = parseInt(this.refs.canvas.getAttribute('width'))
   let height = parseInt(this.refs.canvas.getAttribute('height'))
@@ -152,13 +151,14 @@ Infinity(){
     }
     this.drawCricle(ctx,data.startx,data.starty,data.x,data.y,data.r);
   }
+  requestAnimationFrame(this.Infinity);
 }
 ButtonHandleText(value){
   this.DrawImage(this.getTextData(value));
 }
 DateInterVal(){
   let date = new Date();
-  this.DrawImage(this.getTextData(date.format(' hh:mm:ss')))
+  this.DrawImage(this.getTextData(date.format('hh:mm:ss')))
 }
 render() {
   return (
